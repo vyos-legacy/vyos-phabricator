@@ -1,0 +1,9 @@
+#!/bin/vbash
+shopt -s expand_aliases
+source /etc/default/vyatta
+source /etc/bash_completion.d/vyatta-op
+_vyatta_op_init
+
+source /opt/vyatta/share/vyatta-op/functions/tech-support save-uncompressed
+
+exit
