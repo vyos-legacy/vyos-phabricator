@@ -34,17 +34,6 @@ if(!$config->isEffective("phabricator-token"))
     exit(1);
 }
 
-print "Enter the phabricator task: ";
-while (! $done) {
-  $taskid = <STDIN>;
-  chomp $taskid;
-  if ($taskid eq "") {
-    print "Enter the phabricator task: ";
-  }else{
-    $done = 1;
-  }
-}
-
 my $token = $config->returnEffectiveValue('phabricator-token');
 my $cmd = "curl -sS $url/user.whoami
             -d api.token=$token";
@@ -74,7 +63,7 @@ if (!defined  $dcurl->{'error_code'}) {
   $cmd = "curl -sS $url/paste.edit
           -d api.token=$token
           -d transactions[0][type]=title
-          -d transactions[0][value]=\"$taskid tech-support $datetime\"
+          -d transactions[0][value]=\"$ARGV[0] tech-support $datetime\"
           -d transactions[1][type]=subscribers.add
           -d transactions[1][value][0]=$author
           -d transactions[1][value][1]=PHID-PROJ-a45gcy76up6ufhs3eye2
