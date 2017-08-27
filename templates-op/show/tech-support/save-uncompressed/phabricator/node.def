@@ -1,7 +1,1 @@
-help: Save consolidated tech-support report uncompressed 
-run: if [ "$VYATTA_USER_LEVEL_DIR" == "/opt/vyatta/etc/shell/level/admin" ];
-     then
-       sudo ${vyatta_sbindir}/vyos-tech-support-upload.pl 
-     else
-       echo Must be an admin user to run this command.
-     fi
+help: Upload to Phabricator
